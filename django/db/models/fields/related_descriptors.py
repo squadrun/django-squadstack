@@ -68,6 +68,9 @@ from django.db import connections, router, transaction
 from django.db.models import Q, signals
 from django.db.models.query import QuerySet
 from django.utils.functional import cached_property
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class ForwardManyToOneDescriptor:
@@ -533,9 +536,14 @@ class ReverseManyToOneDescriptor:
         )
 
     def __set__(self, instance, value):
-        raise TypeError(
-            'Direct assignment to the %s is prohibited. Use %s.set() instead.'
-            % self._get_set_deprecation_msg_params(),
+        # raise TypeError(
+        #     'Direct assignment to the %s is prohibited. Use %s.set() instead.'
+        #     % self._get_set_deprecation_msg_params(),
+        # )
+        logger.warning(
+            "Direct assignment to the %s is prohibited. Use %s.set() instead for the instance {0} and msg params:{1}".format(
+                instance,self._get_set_deprecation_msg_params()
+            )
         )
 
 
