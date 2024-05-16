@@ -534,7 +534,7 @@ class ReverseManyToOneDescriptor:
             'reverse side of a related set',
             self.rel.get_accessor_name(),
         )
-
+    #TODO: This is for debugging purpose will be removed later after patching m2m field issue
     def __set__(self, instance, value):
         # raise TypeError(
         #     'Direct assignment to the %s is prohibited. Use %s.set() instead.'
