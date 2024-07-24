@@ -87,6 +87,7 @@ def get_token(request):
     else:
         csrf_secret = _unmask_cipher_token(request.META["CSRF_COOKIE"])
     request.META["CSRF_COOKIE_USED"] = True
+
     return _mask_cipher_secret(csrf_secret)
 
 
