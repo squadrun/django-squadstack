@@ -5,6 +5,7 @@ from django.db.models.fields.json import (
     KeyTextTransform as BuiltinKeyTextTransform,
     KeyTransform as BuiltinKeyTransform,
 )
+
 from django.utils.deprecation import RemovedInDjango40Warning
 
 __all__ = ['JSONField']
